@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Tracker App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div id="login-container">
+        <div class="logo">
+            <img src="logo.png" alt="App Logo"> <!-- Replace with your logo -->
+        </div>
+        <h2>Login to Your Account</h2>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <p>Don't have an account? <a href="javascript:void(0);" onclick="showSignUp()">Sign Up</a></p>
+        <p><a href="javascript:void(0);" onclick="showContactUs()">Contact Us</a> | <a href="javascript:void(0);" onclick="showAboutUs()">About Us</a></p>
+    </div>
+
+    <!-- Dashboard Structure (hidden initially) -->
+    <div id="dashboard-container" style="display: none;">
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <ul>
+                <li onclick="showSection('dashboard')" class="active">Dashboard</li>
+                <li onclick="showSection('report')">Report a User</li>
+                <li onclick="showSection('settings')">User Settings</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="content">
+            <!-- Dashboard -->
+            <div id="dashboard-section" class="section-content">
+                <h3>Transaction Checker</h3>
+                <div id="transaction-checker">
+                    <button onclick="navigateToChecker('UPI')">Check UPI</button>
+                    <button onclick="navigateToChecker('Card')">Check Card</button>
+                </div>
+            </div>
+
+            <!-- UPI/Card Checker Form -->
+            <div id="checker-form-section" class="section-content" style="display: none;">
+                <h3>Check Transaction Security</h3>
+                <input type="text" id="receiver-name" placeholder="Recipient's Name" required>
+                <input type="text" id="receiver-upi" placeholder="Recipient's UPI ID or Card Number" required>
+                <button onclick="checkSecurity()">Check Security</button>
+                <div id="security-result"></div>
+            </div>
+
+            <!-- Report a User Form -->
+            <div id="report-section" class="section-content" style="display: none;">
+                <h3>Report a User</h3>
+                <input type="text" placeholder="User Name" required>
+                <input type="text" placeholder="UPI ID or Card Number">
+                <input type="text" placeholder="Email">
+                <input type="text" placeholder="Phone Number">
+                <textarea placeholder="Describe the fraud" required></textarea>
+                <button onclick="submitReport()">Submit Report</button>
+            </div>
+
+            <!-- User Settings Form -->
+            <div id="settings-section" class="section-content" style="display: none;">
+                <h3>User Settings</h3>
+                <input type="text" placeholder="Update Phone Number">
+                <input type="email" placeholder="Update Email">
+                <input type="text" placeholder="Credit Card Number">
+                <input type="date" placeholder="Date of Birth">
+                <input type="text" placeholder="Address">
+                <button onclick="updateSettings()">Save Changes</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
